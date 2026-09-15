@@ -3,7 +3,6 @@ import { BookService } from '@/services/BookService.js';
 import OtherService from '@/services/OtherService.js';
 import { ref, watch } from 'vue';
 
-
 const books = BookService.getBooks();
 const filteredBooks = ref(books);
 
@@ -31,15 +30,12 @@ watch(selectedCategory, (newCategory) => {
     filteredBooks.value = books;
   }
 });
-
-
 </script>
 
 <template>
   <section>
     <div class="max-w-7xl mx-auto">
-    
-    <div class="flex justify-end mb-6">
+      <div class="flex justify-end mb-6">
         <RouterLink
           to="/books/create"
           class="inline-block bg-blue-600 text-white font-semibold px-5 py-2 rounded hover:bg-blue-700 transition"
@@ -48,14 +44,16 @@ watch(selectedCategory, (newCategory) => {
       </div>
 
       <div class="flex justify-end mb-6">
-        <select v-model="selectedCategory" class="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:ring focus:border-blue-300">
+        <select
+          v-model="selectedCategory"
+          class="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+        >
           <option value="">All Categories</option>
           <option v-for="category in selectorCategories" :key="category" :value="category">
             {{ category }}
           </option>
         </select>
       </div>
-
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="book in filteredBooks" :key="book.id">

@@ -17,7 +17,6 @@ function formatToCOP(price: number): string {
 
   return formatter.format(price).replace(/^\s*\$\s?/, '');
 }
-
 </script>
 
 <template>
